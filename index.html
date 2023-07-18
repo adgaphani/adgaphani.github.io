@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADGA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;500&family=Lato:wght@300;400&family=Nunito:wght@300&family=Open+Sans:wght@400;600&family=Quicksand:wght@300;400&family=Victor+Mono:wght@100&family=Ysabeau+SC:wght@100;300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="logo">
+        <img src="/images/adg-ani-1-B.gif" alt="Logo" id="logo-img">
+        <p id="tagP">Reflecting your tech needs with an edge of creativity and expertise</p>
+    </div>
+    <div class="section" id="section1">
+        <div class="content">
+            <h2>We Are ...</h2>
+            <iframe id="section1Frame" frameborder="0" scrolling="no" height="500px"  width="60%"></iframe>
+        </div>
+        <img src="/images/We-are.png" alt="Image 1" class="image">
+    </div>
+
+    <div class="section" id="section2">
+        <div class="content">
+            <h2>Services</h2>
+            <iframe id="section2Frame" frameborder="0" scrolling="no" height="500px"  width="60%"></iframe>
+        </div>
+        <img src="/images/services.png" alt="Image 2" class="image">
+    </div>
+
+    <div class="section" id="section3">
+        <div class="content">
+            <h2>Why us</h2>
+            <iframe id="section3Frame" frameborder="0" scrolling="no" height="500px"  width="60%"></iframe>
+        </div>
+        <img src="/images/why-us.png" alt="Image 3" class="image">
+    </div>
+
+    <div class="section" id="section4">
+        <div class="content">
+            <h2>Contact</h2>
+            <iframe id="section4Frame" frameborder="0" scrolling="no" height="500px"  width="60%"></iframe>
+        </div>
+        <img src="/images/contact.png" alt="Image 4" class="image">
+    </div>
+
+    <script type="text/javascript">
+        let zIndices = [3, 2, 1, 0];
+        let scrollTimeout;
+        let isScrolling = false;
+        let sectionElements = Array.from(document.querySelectorAll('.section'));
+
+        function loadSectionHTML(sectionId, htmlFile) {
+            const iframe = document.querySelector(`#${sectionId}Frame`);
+            iframe.src = htmlFile;
+        }
+
+        function handleScroll(event) {
+            if (isScrolling) return;
+            isScrolling = true;
+
+            if (event.deltaY > 0) {
+                zIndices.unshift(zIndices.pop());
+            } else {
+                zIndices.push(zIndices.shift());
+            }
+
+            sectionElements.forEach((sectionElement, index) => {
+                sectionElement.style.zIndex = zIndices[index];
+                if (zIndices[index] === 3) {
+                    sectionElement.style.transform = 'scale(1)';
+                    sectionElement.style.opacity = 1;
+                } else {
+                    sectionElement.style.transform = 'scale(1.1)';
+                    sectionElement.style.opacity = 0;
+                }
+            });
+        }
+
+        window.addEventListener('wheel', function(e) {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                console.log('Scrolling has stopped.');
+                isScrolling = false;
+                handleScroll(e);
+            }, 250);
+        });
+
+        window.addEventListener('DOMContentLoaded', function() {
+            loadSectionHTML('section1', '/section1.html');
+            loadSectionHTML('section2', '/section2.html');
+            loadSectionHTML('section3', '/section3.html');
+            loadSectionHTML('section4', '/section4.html');
+        });
+    </script>
+</body>
+</html>
