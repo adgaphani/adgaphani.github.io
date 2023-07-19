@@ -8,12 +8,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;500&family=Lato:wght@300;400&family=Nunito:wght@300&family=Open+Sans:wght@400;600&family=Quicksand:wght@300;400&family=Victor+Mono:wght@100&family=Ysabeau+SC:wght@100;300;500&display=swap" rel="stylesheet">
+<style>
+#scup{
+  transform: scaleY(-1);
+}
+
+  #span {
+    position: absolute;
+    max-width: 96px;
+    font-size: 16px;
+    text-align: center;
+}
+</style>
 </head>
 <body>
+  <span id="span">
+    <img id="scup" src="/scrolD.gif" alt="">
+    Scroll to Navigate!
+    <img src="/scrolD.gif" alt="">
+  </span>
     <div class="logo">
         <img src="/images/adg-ani-1-B.gif" alt="Logo" id="logo-img">
         <p id="tagP">Reflecting your tech needs with an edge of creativity and expertise</p>
     </div>
+
     <div class="section" id="section1">
         <div class="content">
             <h2>We Are ...</h2>
@@ -21,7 +39,6 @@
         </div>
         <img src="/images/We-are.png" alt="Image 1" class="image">
     </div>
-
     <div class="section" id="section2">
         <div class="content">
             <h2>Services</h2>
@@ -43,59 +60,138 @@
             <h2>Contact</h2>
             <iframe id="section4Frame" frameborder="0" scrolling="no" height="500px"  width="60%"></iframe>
         </div>
-        <img src="/images/contact.png" alt="Image 4" class="image">
+        <img src="/usa.png" alt="Image 4" class="image">
     </div>
 
     <script type="text/javascript">
-        let zIndices = [3, 2, 1, 0];
-        let scrollTimeout;
-        let isScrolling = false;
-        let sectionElements = Array.from(document.querySelectorAll('.section'));
+        // Get the span element by its id
+        var span = document.getElementById("span");
 
-        function loadSectionHTML(sectionId, htmlFile) {
-            const iframe = document.querySelector(`#${sectionId}Frame`);
-            iframe.src = htmlFile;
+        // Set the position of the span element to absolute
+        span.style.position = "absolute";
+
+        // Add an event listener for the mousemove event
+        document.addEventListener("mousemove", function(e) {
+            // Get the mouse x and y coordinates
+            var x = e.clientX;
+            var y = e.clientY;
+
+            // Update the span's position using the style property
+            span.style.left = x + "px";
+            span.style.top = y + "px";
+        });
+      let zIndices = [3, 2, 1, 0];
+      let scrollTimeout;
+      let isScrolling = false;
+      let sectionElements = Array.from(document.querySelectorAll('.section'));
+      let navbarLinks = Array.from(document.querySelectorAll('.nav-link'));
+      
+      function loadSectionHTML(sectionId, htmlFile) {
+          const iframe = document.querySelector(`#${sectionId}Frame`);
+          iframe.src = htmlFile;
+      }
+      function handleScroll(event) {
+        if (isScrolling) return;
+        isScrolling = true;
+      
+        if (event.deltaY > 0) {
+          zIndices.unshift(zIndices.pop());
+        } else {
+          zIndices.push(zIndices.shift());
         }
+      
+        sectionElements.forEach((sectionElement, index) => {
+          sectionElement.style.zIndex = zIndices[index];
+          if (zIndices[index] === 3) {
+            sectionElement.style.transform = 'scale(1)';
+            sectionElement.style.opacity = 1;
+      
+            // Check if the section has an iframe
+            const iframe = sectionElement.querySelector('iframe');
+            if (iframe) {
+              // Reload the iframe's source if it's not already loaded
+              const htmlFile = iframe.getAttribute('src');
+              if (!htmlFile) {
+                const sectionId = sectionElement.getAttribute('id');
+                loadSectionHTML(sectionId, `${sectionId}.html`);
+                if(sectionId == "section4"){
+                  
+                  const element = document.getElementById('overlay');
 
-        function handleScroll(event) {
-            if (isScrolling) return;
-            isScrolling = true;
-
-            if (event.deltaY > 0) {
-                zIndices.unshift(zIndices.pop());
-            } else {
-                zIndices.push(zIndices.shift());
-            }
-
-            sectionElements.forEach((sectionElement, index) => {
-                sectionElement.style.zIndex = zIndices[index];
-                if (zIndices[index] === 3) {
-                    sectionElement.style.transform = 'scale(1)';
-                    sectionElement.style.opacity = 1;
-                } else {
-                    sectionElement.style.transform = 'scale(1.1)';
-                    sectionElement.style.opacity = 0;
+// Hide the element by setting its display property to 'none'
+element.style.display = 'none';
                 }
-            });
-        }
+                else{
+                  const element = document.getElementById('overlay');
 
-        window.addEventListener('wheel', function(e) {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(function() {
-                console.log('Scrolling has stopped.');
-                isScrolling = false;
-                handleScroll(e);
-            }, 250);
-        });
+                  // Hide the element by setting its display property to 'none'
+                  element.style.display = 'block';
 
-        window.addEventListener('DOMContentLoaded', function() {
-            loadSectionHTML('section1', '/section1.html');
-            loadSectionHTML('section2', '/section2.html');
-            loadSectionHTML('section3', '/section3.html');
-            loadSectionHTML('section4', '/section4.html');
+                }
+                console.log('Loaded HTML file for section', sectionId);
+              }
+            }
+          } else {
+            sectionElement.style.transform = 'scale(1.1)';
+            sectionElement.style.opacity = 0;
+      
+            // Unload the content of the section
+            const iframe = sectionElement.querySelector('iframe');
+            if (iframe) {
+              iframe.src = '';
+            }
+          }
         });
+      
+
+      }
+      
+      window.addEventListener('wheel', function(e) {
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(function() {
+              console.log('Scrolling has stopped.');
+              isScrolling = false;
+              handleScroll(e);
+          }, 250);
+      });
+      
+      window.addEventListener('DOMContentLoaded', function() {
+          loadSectionHTML('section1', '/section1.html');
+          loadSectionHTML('section2', '/section2.html');
+          loadSectionHTML('section3', '/section3.html');
+          loadSectionHTML('section4', '/section4.html');
+      
+          navbarLinks.forEach((navbarLink, index) => {
+              navbarLink.addEventListener('click', function(event) {
+                  event.preventDefault();
+      
+                  const sectionId = navbarLink.getAttribute('href');
+                  const sectionElement = document.querySelector(`#${sectionId}`);
+      
+                  sectionElements.forEach((otherSectionElement, otherIndex) => {
+                      if (otherSectionElement !== sectionElement) {
+                          otherSectionElement.style.zIndex = zIndices[otherIndex];
+                          if (zIndices[otherIndex] === 3) {
+                              otherSectionElement.style.transform = 'scale(1)';
+                              otherSectionElement.style.opacity = 1;
+                          } else {
+                              otherSectionElement.style.transform = 'scale(1.1)';
+                              otherSectionElement.style.opacity = 0;
+                          }
+                      }
+                  });
+      
+                  sectionElement.style.zIndex = 3;
+                  sectionElement.style.transform = 'scale(1)';
+                  sectionElement.style.opacity = 1;
+              });
+          });
+      });
+      
+    
+    
     </script>
-    <div class="overlay"></div> <!-- Transparent div -->
+    <div id="overlay"></div> <!-- Transparent div -->
     <div id="particles-js"></div>
 <!-- stats - count particles --> 
 <script src="/particles.min.js"></script> 

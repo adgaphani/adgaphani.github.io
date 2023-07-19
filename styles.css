@@ -63,7 +63,8 @@ body, html {
 
 
     }
-    
+
+
     .section .content {
     padding: 20px;
     }
@@ -80,17 +81,19 @@ body, html {
         color: transparent;
         background-clip: text;
     }
-    .overlay {
+    #overlay {
+        top: 30%;
         position: fixed;
-        cursor: progress;
+        cursor: none;
         bottom: 0;
-        left: 180px;
-        width: 60%;
-        height: 80vh;
+        left: 80px;
+        width: 80%;
+        height: 50vh;
         background-color: transparent;
         overflow: hidden;
         z-index: 9999;
         background: transparent;
+    
     }
     
     
