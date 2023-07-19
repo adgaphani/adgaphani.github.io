@@ -9,7 +9,9 @@ body, html {
     background-blend-mode: screen;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    cursor: none;
     }
+    
     #particles-js{
         position:absolute;
         width: 100%;
@@ -20,37 +22,11 @@ body, html {
         background-size: cover;
         background-position: 50% 50%;
    }
-   /* ---- stats.js ---- */
-    .count-particles{
-        background: #00002200;
-        position: absolute;
-        top: 48px;
-        left: 0;
-        width: 80px;
-        color: #13e9e900;
-        font-size: .8em;
-        text-align: left;
-        text-indent: 4px;
-        line-height: 14px;
-        padding-bottom: 2px;
-        font-family: Helvetica, Arial, sans-serif;
-        font-weight: bold;
-   }
-    .js-count-particles{
-        font-size: 1.1em;
-   }
-    #stats, .count-particles{
-        -webkit-user-select: none;
-        margin-top: 5px;
-        margin-left: 5px;
-   }
-    #stats{
-        border-radius: 3px 3px 0 0;
-        overflow: hidden;
-   }
-    .count-particles{
-        border-radius: 0 0 3px 3px;
-   }
+ 
+ iframe{
+    position: absolute;
+    top: 85px;
+ }
     .section {
     position: fixed;
     color: rgb(0, 0, 0);
@@ -106,15 +82,17 @@ body, html {
     }
     .overlay {
         position: fixed;
+        cursor: progress;
         bottom: 0;
-        right: 0;
-        width: 90%;
+        left: 180px;
+        width: 60%;
         height: 80vh;
         background-color: transparent;
         overflow: hidden;
         z-index: 9999;
         background: transparent;
     }
+    
     
     .section p {
     margin-top: 0;

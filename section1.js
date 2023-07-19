@@ -1,34 +1,12 @@
-<!DOCTYPE html>
-<!--
-	NOTES:
-	1. All tokens are represented by '$' sign in the template.
-	2. You can write your code only wherever mentioned.
-	3. All occurrences of existing tokens will be replaced by their appropriate values.
-	4. Blank lines will be removed automatically.
-	5. Remove unnecessary comments before creating your template.
--->
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="authoring-tool" content="Adobe_Animate_CC">
-<title>section1</title>
-<style>
-
-	body, canvas{
-		background-color: transparent;
-		margin: 0;
-		padding: 0;
-	}
-</style>
-<!-- write your code here -->
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script>
 (function (cjs, an) {
+
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"section1_atlas_1", frames: [[0,0,457,231]]}
+		{name:"section1_atlas_1", frames: [[980,0,961,279],[980,281,671,172],[0,0,978,612]]}
 ];
+
+
 (lib.AnMovieClip = function(){
 	this.actionFrames = [];
 	this.ignorePause = false;
@@ -46,11 +24,31 @@ lib.ssMetadata = [
 	}
 }).prototype = p = new cjs.MovieClip();
 // symbols:
-(lib.CachedBmp_1 = function() {
+
+
+
+(lib.CachedBmp_2 = function() {
 	this.initialize(ss["section1_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
-(lib.hello = function(mode,startPosition,loop,reversed) {
+
+
+
+(lib.CachedBmp_1 = function() {
+	this.initialize(ss["section1_atlas_1"]);
+	this.gotoAndStop(1);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.CachedBmp_3 = function() {
+	this.initialize(ss["section1_atlas_1"]);
+	this.gotoAndStop(2);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.THATSUS = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -60,15 +58,43 @@ if (reversed == null) { reversed = false; }
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
+
+	// Layer_1
+	this.instance = new lib.CachedBmp_2();
+	this.instance.setTransform(-34.15,-18.4,0.0725,0.0725);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-34.1,-18.4,69.6,20.2);
+
+
+(lib.TECHALLYCAPT = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
 	// Layer_1
 	this.instance = new lib.CachedBmp_1();
-	this.instance.setTransform(0,0,0.5,0.5);
+	this.instance.setTransform(-3.8,-36.45,0.074,0.074);
+
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
 	this._renderFirstFrame();
+
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,228.5,115.5);
-// stage content:
-(lib.Untitled1 = function(mode,startPosition,loop,reversed) {
+p.nominalBounds = new cjs.Rectangle(-3.8,-36.4,49.699999999999996,12.7);
+
+
+(lib.Symbol1 = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -78,31 +104,91 @@ if (reversed == null) { reversed = false; }
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
+
 	// Layer_1
-	this.instance = new lib.hello("synched",0);
-	this.instance.setTransform(142.2,166.75,1,1,0,0,0,114.2,57.7);
-	this.instance.alpha = 0;
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({alpha:1},31).wait(1));
+	this.instance = new lib.CachedBmp_3();
+	this.instance.setTransform(0,-10,0.5,0.5);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
 	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,-10,489,306);
+
+
+// stage content:
+(lib.content = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	this.actionFrames = [117];
+	// timeline functions:
+	this.frame_117 = function() {
+		this.stop();
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).wait(117).call(this.frame_117).wait(1));
+
+	// Layer_3
+	this.instance = new lib.Symbol1("synched",0);
+	this.instance.setTransform(203.5,149.55,1,1,0,0,0,159.5,135.5);
+	this.instance.alpha = 0;
+	this.instance._off = true;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(81).to({_off:false},0).to({alpha:1},7).wait(30));
+
+	// THSTS_US
+	this.instance_1 = new lib.THATSUS();
+	this.instance_1.setTransform(275,160);
+	this.instance_1.alpha = 0;
+	this.instance_1._off = true;
+	new cjs.ButtonHelper(this.instance_1, 0, 1, 1);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(47).to({_off:false},0).to({regX:0.4,regY:0.4,scaleX:6.8993,scaleY:6.8993,x:279.75,y:164.1,alpha:1},5).wait(13).to({regX:0,regY:0,scaleX:1,scaleY:1,x:275,y:80,alpha:0},7).to({_off:true},1).wait(45));
+
+	// WE__ARE
+	this.instance_2 = new lib.TECHALLYCAPT();
+	this.instance_2.setTransform(377.25,196.6,1,1,0,0,0,121.2,10.1);
+	this.instance_2.alpha = 0;
+	new cjs.ButtonHelper(this.instance_2, 0, 1, 1);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).to({regX:121.5,scaleX:6.7536,scaleY:6.7536,x:962.35,y:420,alpha:1},5).wait(34).to({regX:121.2,scaleX:1,scaleY:1,x:377.25,y:196.6,alpha:0},5).to({_off:true},1).wait(73));
+
+	this._renderFirstFrame();
+
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(303,309.1,-46.5,-84.50000000000003);
+p.nominalBounds = new cjs.Rectangle(0,0,533,310.1);
 // library properties:
 lib.properties = {
-	id: '23B224E93B20704BA5F5BD166AFAC3FE',
+	id: '5E43FAFF18B0614DAFFB60D80F9AAEEA',
 	width: 550,
 	height: 400,
 	fps: 24,
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/section1_atlas_1.png", id:"section1_atlas_1"}
+		{src:"images/section1_atlas_1.png?1689739952068", id:"section1_atlas_1"}
 	],
 	preloads: []
 };
+
+
+
 // bootstrap callback support:
+
 (lib.Stage = function(canvas) {
 	createjs.Stage.call(this, canvas);
 }).prototype = p = new createjs.Stage();
+
 p.setAutoPlay = function(autoPlay) {
 	this.tickEnabled = autoPlay;
 }
@@ -110,11 +196,14 @@ p.play = function() { this.tickEnabled = true; this.getChildAt(0).gotoAndPlay(th
 p.stop = function(ms) { if(ms) this.seek(ms); this.tickEnabled = false; }
 p.seek = function(ms) { this.tickEnabled = true; this.getChildAt(0).gotoAndStop(lib.properties.fps * ms / 1000); }
 p.getDuration = function() { return this.getChildAt(0).totalFrames / lib.properties.fps * 1000; }
+
 p.getTimelinePosition = function() { return this.getChildAt(0).currentFrame / lib.properties.fps * 1000; }
+
 an.bootcompsLoaded = an.bootcompsLoaded || [];
 if(!an.bootstrapListeners) {
 	an.bootstrapListeners=[];
 }
+
 an.bootstrapCallback=function(fnCallback) {
 	an.bootstrapListeners.push(fnCallback);
 	if(an.bootcompsLoaded.length > 0) {
@@ -123,22 +212,27 @@ an.bootstrapCallback=function(fnCallback) {
 		}
 	}
 };
+
 an.compositions = an.compositions || {};
-an.compositions['23B224E93B20704BA5F5BD166AFAC3FE'] = {
+an.compositions['5E43FAFF18B0614DAFFB60D80F9AAEEA'] = {
 	getStage: function() { return exportRoot.stage; },
 	getLibrary: function() { return lib; },
 	getSpriteSheet: function() { return ss; },
 	getImages: function() { return img; }
 };
+
 an.compositionLoaded = function(id) {
 	an.bootcompsLoaded.push(id);
 	for(var j=0; j<an.bootstrapListeners.length; j++) {
 		an.bootstrapListeners[j](id);
 	}
 }
+
 an.getComposition = function(id) {
 	return an.compositions[id];
 }
+
+
 an.makeResponsive = function(isResp, respDim, isScale, scaleType, domContainers) {		
 	var lastW, lastH, lastS=1;		
 	window.addEventListener('resize', resizeCanvas);		
@@ -199,57 +293,7 @@ an.handleFilterCache = function(event) {
 		}
 	}
 }
+
+
 })(createjs = createjs||{}, AdobeAn = AdobeAn||{});
 var createjs, AdobeAn;
-</script>
-<script>
-var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-function init() {
-	canvas = document.getElementById("canvas");
-	anim_container = document.getElementById("animation_container");
-	dom_overlay_container = document.getElementById("dom_overlay_container");
-	var comp=AdobeAn.getComposition("23B224E93B20704BA5F5BD166AFAC3FE");
-	var lib=comp.getLibrary();
-	var loader = new createjs.LoadQueue(false);
-	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
-	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-	var lib=comp.getLibrary();
-	loader.loadManifest(lib.properties.manifest);
-}
-function handleFileLoad(evt, comp) {
-	var images=comp.getImages();	
-	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
-}
-function handleComplete(evt,comp) {
-	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-	var lib=comp.getLibrary();
-	var ss=comp.getSpriteSheet();
-	var queue = evt.target;
-	var ssMetadata = lib.ssMetadata;
-	for(i=0; i<ssMetadata.length; i++) {
-		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
-	}
-	exportRoot = new lib.Untitled1();
-	stage = new lib.Stage(canvas);	
-	//Registers the "tick" event listener.
-	fnStartAnimation = function() {
-		stage.addChild(exportRoot);
-		createjs.Ticker.framerate = lib.properties.fps;
-		createjs.Ticker.addEventListener("tick", stage);
-	}	    
-	//Code to support hidpi screens and responsive scaling.
-	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
-	AdobeAn.compositionLoaded(lib.properties.id);
-	fnStartAnimation();
-}
-</script>
-<!-- write your code here -->
-</head>
-<body onload="init();" style="margin:0px;">
-	<div id="animation_container" style="background-color:transparent; width:550px; height:400px">
-		<canvas id="canvas" width="550" height="400" style="position: absolute; display: block; background-color:transparent "></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:550px; height:400px; position: absolute; left: 0px; top: 0px; display: block;">
-		</div>
-	</div>
-</body>
-</html>
